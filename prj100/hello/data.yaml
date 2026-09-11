@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../train/images
+test: ../train/images
+
+nc: 1
+names: ['lacto']
+
+roboflow:
+  workspace: -rbgpt
+  project: kh_class_dl0911
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/-rbgpt/kh_class_dl0911/dataset/1
