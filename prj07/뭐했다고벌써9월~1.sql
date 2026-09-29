@@ -1,0 +1,12 @@
+CREATE SEQUENCE SEQ_BOARD NOCACHE NOCYCLE;
+
+CREATE TABLE MEMBER(
+    ID              NUMBER              PRIMARY KEY
+    , USER_ID       VARCHAR2(100)       UNIQUE NOT NULL
+    , USER_PW       VARCHAR2(100)       NOT NULL
+    , USER_NICK     VARCHAR2(100)
+    , GENDER        CHAR(1)             CHECK(GENDER IN ('M','F'))
+    , QUIT_YN       CHAR(1)             CHECK(GENDER IN ('Y','N'))
+    , CREATED_AT    TIMESTAMP           DEFAULT SYSDATE
+    , UPDATED_AT    TIMESTAMP           DEFAULT SYSDATE
+);
