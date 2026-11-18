@@ -1,0 +1,43 @@
+-- 시퀀스 생성
+CREATE SEQUENCE SEQ_BOARD NOCACHE NOCYCLE;
+
+-- 시퀀스 삭제
+DROP SEQUENCE SEQ_BOARD;
+
+-- 테이블 생성
+CREATE TABLE BOARD(
+    ID            NUMBER                PRIMARY KEY
+    , TITLE       VARCHAR2(100)         NOT NULL
+    , CONTENT     VARCHAR2(4000)        NOT NULL
+    , CREATED_AT  TIMESTAMP             DEFAULT SYSDATE
+    , UPDATED_AT  TIMESTAMP             DEFAULT SYSDATE
+    , DEL_YN      CHAR(1)               DEFAULT 'N' CHECK(DEL_YN IN ('Y', 'N'))
+);
+
+-- 테이블 삭제
+DROP TABLE BOARD;
+
+-- 게시글 상세 조회
+SELECT *
+FROM BOARD
+WHERE ID = 1
+AND DEL_YN = 'N';
+
+-- 게시글 목록 조회
+SELECT *
+FROM BOARD
+WHERE DEL_YN = 'N'
+ORDER BY ID DESC;
+
+-- 게시글 작성
+INSERT INTO BOARD(ID, TITLE, CONTENT)
+VALUES(SEQ_BOARD.NEXTVAL, 'TTT', 'CCC');
+COMMIT;
+
+-- 게시글 수정
+UPDATE BOARD SET TITLE = 'TITLE01' WHERE ID = 1;
+
+-- 게시글 삭제
+DELETE BOARD WHERE ID =1;
+
+COMMIT;
